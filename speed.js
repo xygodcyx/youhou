@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         视频加速(B站，A站，油管，优酷，爱奇艺，搜狐等各大视频网站)
 // @namespace    http://xyGodcyx.speed.top/
-// @version      1.0.0
+// @version      1.0.2
 // @description  完美加速视频，以及自定义速度，各个网站独立加速
 // @author       xyGod
 // @match        *://www.bilibili.com/video/*
@@ -108,6 +108,18 @@
         const id = setInterval(function () {
             if (mainVideo) {
                 mainVideo.playbackRate = curSpeed
+                mainVideo.addEventListener("ended", function () {
+                    mainVideo = document.querySelector("video")
+                    mainVideo.playbackRate = curSpeed
+                })
+                mainVideo.addEventListener("timeupdate", function () {
+                    mainVideo = document.querySelector("video")
+                    mainVideo.playbackRate = curSpeed
+                })
+                mainVideo.addEventListener("change", function () {
+                    mainVideo = document.querySelector("video")
+                    mainVideo.playbackRate = curSpeed
+                })
                 clearInterval(id)
             }
             mainVideo = document.querySelector("video")

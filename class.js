@@ -63,6 +63,13 @@
         video.play()
     }
 
+    setInterval(function () {
+        if (video) {
+            video.muted = true
+            video.play()
+        }
+    }, 1000)
+
     function onEnded(e) {
         // const nextId = curId + 1
         // const params = new URLSearchParams(window.location.href)
@@ -72,7 +79,7 @@
         // const path = temp.map((t) => t.join("=")).join("&")
         // window.location = path
         setTimeout(function () {
-            $(".next_button___YGZWZ").click()
+            document.querySelector(".next_button___YGZWZ").click()
         }, 2000)
     }
 
